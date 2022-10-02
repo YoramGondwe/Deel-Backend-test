@@ -32,17 +32,20 @@ describe("getAllContracts", function () {
             },
           };
     })
+    this.afterEach(()=>{
+        sinon.restore()
+    })
   it("should return all contracts", async function () {
 
     const mock = sinon.mock(res)
     mock.expects("json")
      .once().withArgs( stubValues )
      const stub = sinon.stub(Contract,"findAll").returns(stubValues);
+     await contractController.getAllContracts(req, res);
      
-   await contractController.getAllContracts(req, res);
-    
     expect(stub.calledOnce).to.be.true;
     mock.verify();
+    stub.reset();
   });
 });
 

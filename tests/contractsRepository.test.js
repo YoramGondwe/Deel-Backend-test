@@ -25,4 +25,33 @@ describe("Contracts Repository", function () {
       expect(contract.id).to.be.equal(stubValue.id);
     });
   });
+
+  describe('get List of Contracts', () => { 
+    const stubValues = [];
+    Array.from({ length: 5 }).forEach(() =>
+      stubValues.push(createRandomContracts())
+    );
+    it("should return a list of contracts", async () => {
+        const stub = sinon.stub(Contract, "findAll").returns(stubValues);
+        
+        const contractRepo = new contractRepository();
+        const contracts = await contractRepo.listContracts(2);
+        console.log(contracts);
+        expect(stub.calledOnce).to.be.true;
+        expect(contracts.length).to.be.equal(stubValues.length);
+
+    })
+   })
 });
+
+function createRandomContracts() {
+    return {
+      id: faker.datatype.number({ max: 5 }),
+      terms: faker.lorem.paragraph(),
+      status: "in_progress",
+      createdAt: faker.date.past(),
+      updatedAt: faker.date.past(),
+      ContractorId: faker.datatype.number({ max: 5 }),
+      ClientId: faker.datatype.number({ min:1, max: 2 }),
+    };
+  }

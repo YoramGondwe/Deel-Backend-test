@@ -3,6 +3,7 @@
 ##Next Steps
 > provided with more time these are the few things i would add to the project
  - Layer the Project with controllers that call services that depend on repositories.
+ - create a models file where i can separate the models file into individual models
  - Write more tests for services and repositories like demonstrated in my test files on contracts.
  - implement transaction locks for updating payments to mitigate race conditions
  - Another option would be to implement first in first out (FIFO) ques to mitigate race conditions.
