@@ -11,7 +11,7 @@
   "scripts": {
     "start": "nodemon ./src/server.js",
     "seed": "node ./scripts/seedDb.js",
-    "test": "mocha ./tests/contracts.test.js"
+    "test": "mocha  ./tests/**.*.js"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
